@@ -1,4 +1,4 @@
-package com.simplify.exception;
+﻿package com.simplify.exception;
 
 public class UsernameAlreadyExistsException extends RuntimeException {
     public UsernameAlreadyExistsException(String username) {
