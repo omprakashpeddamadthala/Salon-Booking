@@ -1,10 +1,9 @@
 package com.simplify.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -20,8 +19,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
+    private String userId;
     private String firstName;
     private String lastName;
+    private String username;
+
+    @Column(unique = true)
     private String email;
     private String password;
     private String address;
@@ -31,6 +35,11 @@ public class User {
     private String country;
     private String phoneNumber;
     private String role;
+
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
+    @UpdateTimestamp
+    @Column(insertable = false)
     private LocalDateTime updatedAt;
 }
