@@ -7,12 +7,11 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class SalonRequest {
+public class SalonResponse {
     private String salonId;
     private String name;
     private List<String> images;
