@@ -3,7 +3,6 @@ package com.simplify.service.impl;
 import com.simplify.dtos.UserDTO;
 import com.simplify.exception.EmailAlreadyExistsException;
 import com.simplify.exception.UserNotFoundException;
-import com.simplify.exception.UsernameAlreadyExistsException;
 import com.simplify.mapper.UserMapper;
 import com.simplify.model.User;
 import com.simplify.repository.UserRepository;
@@ -48,7 +47,7 @@ public class UserServiceImpl implements UserService {
         log.info("Creating new user with email: {}", userDTO.getEmail());
         if (userRepository.existsByUsername(userDTO.getUsername())) {
             log.warn("User with username {} already exists", userDTO.getUsername());
-            throw new UsernameAlreadyExistsException(userDTO.getUsername());
+            throw new RuntimeException(userDTO.getUsername());
         }
 
         if (userRepository.existsByEmail(userDTO.getEmail())) {

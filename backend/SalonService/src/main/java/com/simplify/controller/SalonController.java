@@ -10,5 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class SalonController {
 
-    private final SalonService salonService;
+
+
 }
