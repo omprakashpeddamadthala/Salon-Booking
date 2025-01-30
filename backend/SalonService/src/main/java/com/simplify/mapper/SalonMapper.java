@@ -26,7 +26,7 @@ public class SalonMapper {
         return modelMapper.map(salonDTO, SalonResponse.class);
     }
 
-    public SalonDTO mapToSalonDTO(SalonRequest salonRequest) {
+    public SalonDTO salonRequestToSalonDTO(SalonRequest salonRequest) {
         return modelMapper.map( salonRequest, SalonDTO.class );
     }
 
