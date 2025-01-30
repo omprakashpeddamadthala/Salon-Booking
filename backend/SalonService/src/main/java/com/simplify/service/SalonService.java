@@ -9,7 +9,7 @@ public interface SalonService {
 
     SalonDTO createSalon(SalonDTO salonDTO, UserDTO userDTO);
 
-    SalonDTO updateSalon(SalonDTO salonDTO,UserDTO userDTO);
+    SalonDTO updateSalon(SalonDTO salonDTO,UserDTO userDTO, String salonId);
 
     List<SalonDTO> getAllSalons();
 
@@ -17,8 +17,6 @@ public interface SalonService {
 
     void deleteSalonBySalonId(String salonId);
 
-    SalonDTO getSalonsByOwnerId(Long ownerId);
-
-    SalonDTO searchSalonByCity(String city);
+    List<SalonDTO> searchSalonByCity(String city);
 
 }
