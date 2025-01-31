@@ -36,7 +36,7 @@ public class SalonController {
         return new ResponseEntity<>( salonResponse,HttpStatus.CREATED );
     }
 
-    @PostMapping("/{salonId}")
+    @PutMapping("/{salonId}")
     public ResponseEntity<SalonResponse> updateSalon(@Valid @RequestBody SalonRequest salonRequest, @PathVariable String salonId) {
         log.info( "Received POST request to update salon with name: {}", salonRequest.getName() );
         SalonDTO salonDTO = salonMapper.salonRequestToSalonDTO( salonRequest );
