@@ -75,8 +75,8 @@ public class SalonController {
     }
 
 
-    @GetMapping("/search/{city}")
-    public ResponseEntity<List<SalonResponse>> searchSalonByCity(@PathVariable String city) {
+    @GetMapping("/search}")
+    public ResponseEntity<List<SalonResponse>> searchSalonByCity(@RequestParam String city) {
         log.info( "Received GET request to search salon by city: {}", city );
         List<SalonDTO> salonDTOS = salonService.searchSalonByCity( city );
         List<SalonResponse> salonResponses = salonDTOS.stream().map( salonMapper::mapToSalonResponse ).collect( Collectors.toList() );

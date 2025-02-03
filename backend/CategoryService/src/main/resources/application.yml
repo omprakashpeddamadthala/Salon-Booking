@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: CategoryService
+  profiles:
+    active: dev
