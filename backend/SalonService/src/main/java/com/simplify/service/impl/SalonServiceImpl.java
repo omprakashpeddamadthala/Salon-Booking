@@ -38,8 +38,15 @@ public class SalonServiceImpl implements SalonService {
     public SalonDTO updateSalon(SalonDTO salonDTO, UserDTO userDTO, String salonId) {
         log.info( "Updating salon with salonDTO: {}", salonDTO.getName() );
         Salon existingSalon  = this.getSalonDetails( salonId );
+        existingSalon.setName( salonDTO.getName() );
+        existingSalon.setAddress( salonDTO.getAddress() );
+        existingSalon.setCity( salonDTO.getCity() );
+        existingSalon.setState( salonDTO.getState() );
+        existingSalon.setZip( salonDTO.getZip() );
+        existingSalon.setCountry( salonDTO.getCountry() );
+        existingSalon.setPhoneNumber( salonDTO.getPhoneNumber() );
         existingSalon.setOwnerId( userDTO.getId() );
-        existingSalon =salonMapper.mapToSalon( salonDTO );
+        existingSalon.setSalonId( salonId );
         Salon savedSalon = salonRepository.save( existingSalon );
         return salonMapper.mapToSalonDTO( savedSalon );
     }
