@@ -4,6 +4,7 @@ import com.simplify.dtos.CategoryDTO;
 import com.simplify.dtos.SalonDTO;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface CategoryService {
 
@@ -11,9 +12,9 @@ public interface CategoryService {
 
     List<CategoryDTO> getAllCategoriesBySalonId(String salonId);
 
-    CategoryDTO getCategoryById(String categoryId);
+    CategoryDTO getCategoryById(UUID categoryId);
 
-    CategoryDTO updateCategory(CategoryDTO categoryDTO);
+    CategoryDTO updateCategory(CategoryDTO categoryDTO,SalonDTO salonDTO,UUID categoryId);
 
-    void deleteCategory(String categoryId);
+    void deleteCategory(UUID categoryId);
 }

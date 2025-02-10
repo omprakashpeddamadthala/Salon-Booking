@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -38,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO getCategoryById(String categoryId) {
+    public CategoryDTO getCategoryById(UUID categoryId) {
         log.info( "Fetching category by id: {}", categoryId );
         Category category = categoryRepository.findByCategoryId( categoryId );
         log.info( "Fetched category by id: {}", category.getCategoryId() );
@@ -46,12 +47,22 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryDTO updateCategory(CategoryDTO categoryDTO) {
-        return null;
+    public CategoryDTO updateCategory(CategoryDTO categoryDTO, SalonDTO salonDTO,UUID categoryId) {
+        log.info( "Updating category with id: {}", categoryId );
+        Category category = categoryRepository.findByCategoryId( categoryId );
+        if (category != null) {
+            category.setName( categoryDTO.getName() );
+            category.setDescription( categoryDTO.getDescription() );
+            category.setImage( categoryDTO.getImage() );
+            category.setSalonId( categoryDTO.getSalonId() );
+            return categoryMapper.mapToCategoryDTO( categoryRepository.save( category ) );
+        }
+      return null;
     }
 
     @Override
-    public void deleteCategory(String categoryId) {
-
+    public void deleteCategory(UUID categoryId) {
+        log.info( "Deleting category with id: {}", categoryId );
+        categoryRepository.deleteByCategoryId( categoryId );
     }
 }

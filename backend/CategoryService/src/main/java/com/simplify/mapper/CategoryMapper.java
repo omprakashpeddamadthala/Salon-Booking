@@ -6,13 +6,14 @@ import com.simplify.payload.CategoryRequest;
 import com.simplify.payload.CategoryResponse;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
 public class CategoryMapper {
 
-    private final ModelMapper modelMapper;
+    @Autowired
+    private  ModelMapper modelMapper;
 
     public CategoryDTO mapToCategoryDTO(Category category) {
         return modelMapper.map(category, CategoryDTO.class);
